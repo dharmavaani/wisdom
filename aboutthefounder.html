@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Founder | Dharma Vaani</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '375px',
+                    },
+                    colors: {
+                        saffron: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#92400e',
+                            900: '#78350f',
+                        },
+                        stone: {
+                            50: '#FCFBF9',
+                            100: '#FAF8F5',
+                            200: '#EAE8E4',
+                            300: '#DCDAD6',
+                            900: '#1C1917',
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Meditative scrollbar custom layout */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #DCDAD6;
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b45309;
+        }
+        .clean-transition {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-900 font-sans selection:bg-saffron-100 selection:text-saffron-900 min-h-screen flex flex-col overflow-x-hidden antialiased">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-stone-100/90 backdrop-blur-md border-b border-stone-200/60 px-4 sm:px-8 lg:px-12 py-3 sm:py-4 flex justify-between items-center">
+        <!-- Back to Main Site Navigation Button -->
+        <div class="flex items-center">
+            <a href="index.html" class="bg-stone-900 text-stone-100 hover:bg-stone-800 active:scale-98 font-medium px-4 sm:px-5 py-2.5 sm:py-3 rounded-full transition-all tracking-widest text-[9px] uppercase inline-flex items-center gap-2 shadow-sm font-sans min-h-[44px]">
+                <i class="fa-solid fa-arrow-left text-[9px]"></i> <span>Back to Sanctuary</span>
+            </a>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+            <div class="w-8 h-8 sm:w-10 sm:h-10 overflow-hidden flex items-center justify-center bg-transparent">
+                <img src="logo.png" alt="Dharma Vaani Logo" class="w-full h-full object-contain scale-[1.2] sm:scale-[1.3]" style="mix-blend-mode: multiply;" onerror="this.src='https://placehold.co/100x100/FAF8F5/78350f?text=DV'">
+            </div>
+            <div>
+                <h1 class="font-cinzel text-xs sm:text-sm font-bold tracking-widest text-stone-900 leading-tight">Dharma Vaani</h1>
+                <span class="text-[7px] sm:text-[8px] text-stone-500 tracking-widest uppercase font-medium block">By Your Devoted Servant</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO / FOUNDER BIOGRAPHY -->
+    <main class="flex-grow">
+        <section class="relative py-12 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-16 bg-stone-50 border-b border-stone-200/60">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 sm:gap-16">
+                
+                <!-- Founder Photo Container -->
+                <div class="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm lg:w-[400px] flex-shrink-0">
+                    <div class="relative group bg-white border border-stone-200/80 p-3 sm:p-4 rounded-3xl shadow-sm transition-all hover:border-stone-300">
+                        <div class="aspect-[3/4] w-full rounded-2xl overflow-hidden border border-stone-100 bg-stone-100 shadow-inner relative flex items-center justify-center">
+                            <img id="founder-photo" src="founder.jpeg" alt="Founder Portrait" class="w-full h-full object-cover grayscale-[15%] transition-all duration-700 hover:scale-[1.03] hover:grayscale-0" onerror="handlePhotoError()">
+                            
+                            <!-- Premium fallback graphic state when founder.jpg isn't placed yet -->
+                            <div id="photo-fallback" class="absolute inset-0 flex flex-col items-center justify-center bg-stone-100/90 p-4 sm:p-6 text-center text-stone-400 hidden">
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-dashed border-stone-300 flex items-center justify-center text-2xl sm:text-3xl mb-4 bg-stone-50">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <span class="font-cinzel text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-700">Add Portrait Here</span>
+                                <p class="text-[9px] sm:text-[10px] text-stone-400 font-light mt-1.5 leading-relaxed max-w-[200px]"><strong class="text-stone-600 font-semibold font-mono">founder.jpeg</strong></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Mini Caption Card -->
+                        <div class="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t border-stone-100 text-center">
+                            <h3 class="font-cinzel text-xs sm:text-sm text-stone-900 font-bold tracking-wider">Founder</h3>
+                            <span class="text-[8px] sm:text-[9px] uppercase tracking-widest text-saffron-600 font-semibold block mt-0.5">Dharma Vaani</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biography Context -->
+                <div class="max-w-2xl text-center lg:text-left space-y-4 sm:space-y-6">
+                    <span class="inline-flex items-center gap-1.5 text-[8px] sm:text-[9px] tracking-widest text-saffron-600 uppercase font-semibold border border-saffron-200 px-3 py-1 rounded-full bg-saffron-50/50">
+                        <i class="fa-solid fa-om"></i> Meet the Seeker
+                    </span>
+                    <h1 class="font-cinzel text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-normal tracking-wide leading-tight text-stone-900">
+                        Preserving Vedic Wisdom <br><span class="italic text-saffron-600 font-light">for Generations</span>
+                    </h1>
+                    
+                    <div class="space-y-4 text-xs sm:text-sm text-stone-500 font-light leading-relaxed">
+                        <p>
+                            Welcome, seeker of ultimate truth. The creation of <strong class="text-stone-800 font-medium">Dharma Vaani</strong> was initiated not out of academic curiosity, but out of a deep-seated spiritual longing. Having walked the ancient pilgrimage paths and spent decades absorbing the teachings of the Bhagavad Gita and the Upanishads, I felt a strong inner call to construct a safe space for modern minds to connect with Sanatan Dharma.
+                        </p>
+                        <p>
+                            Today, our modern lifestyles are crowded with social media triggers, constant overthinking, and anxiety. Our ancient rishis and sages left behind absolute pathways and tools to construct steady, peaceful minds. Dharma Vaani serves to translate those sacred metrics into structured video discourses, meditations, and daily reminders.
+                        </p>
+                    </div>
+
+                    <!-- Social Channels Strip -->
+                    <div class="pt-4 border-t border-stone-200/50 flex flex-wrap justify-center lg:justify-start gap-4 text-stone-500">
+                        <a href="https://youtube.com/@dharma_vaani_official?si=B7Z0sQtPm9d-qA2E" target="_blank" class="hover:text-red-600 p-2 text-xs sm:text-sm flex items-center gap-2 transition-colors duration-300 min-h-[44px]">
+                            <i class="fa-brands fa-youtube"></i> <span class="text-[8px] sm:text-[9px] tracking-wider uppercase font-semibold">YouTube</span>
+                        </a>
+                        <span class="text-stone-300 self-center hidden xs:inline">|</span>
+                        <a href="https://www.instagram.com/_dharma_vaani_?igsh=MWZvdTNqanBzaGx1ZA==" target="_blank" class="hover:text-pink-600 p-2 text-xs sm:text-sm flex items-center gap-2 transition-colors duration-300 min-h-[44px]">
+                            <i class="fa-brands fa-instagram"></i> <span class="text-[8px] sm:text-[9px] tracking-wider uppercase font-semibold">Instagram</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CORE PHILOSOPHY / SERIF QUOTE -->
+        <section class="py-12 sm:py-20 lg:py-24 px-4 sm:px-8 bg-white text-center">
+            <div class="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+                <i class="fa-solid fa-quote-left text-xl sm:text-2xl text-saffron-200 block"></i>
+                <blockquote class="font-cinzel text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-stone-900 italic tracking-wide leading-relaxed font-light">
+                    "The mind acts as an enemy for those who cannot control it, but becomes the greatest friend once conquered by steady devotion."
+                </blockquote>
+                <div class="flex items-center justify-center gap-2 mt-4 text-[8px] sm:text-[9px] uppercase tracking-widest text-saffron-600 font-semibold">
+                    <span class="w-6 sm:w-8 h-[1px] bg-saffron-200"></span>
+                    <span>Bhagavad Gita, Chapter 6</span>
+                    <span class="w-6 sm:w-8 h-[1px] bg-saffron-200"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PILLARS OF SANGHA -->
+        <section class="py-12 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+            <div class="text-center space-y-2 sm:space-y-3 max-w-2xl mx-auto mb-10 sm:mb-16">
+                <span class="text-[8px] sm:text-[9px] text-saffron-600 uppercase tracking-widest font-semibold block">The Four Pillars</span>
+                <h2 class="font-cinzel text-lg sm:text-2xl text-stone-900 font-medium tracking-wide">Our Sacred Vision Nodes</h2>
+                <p class="text-[10px] sm:text-xs text-stone-400 font-light">How we approach preserving and translating ancient Indian values for seekers worldwide.</p>
+            </div>
+
+            <!-- Fully Responsive Columns: 1 on mobile, 2 on tablet, 4 on desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Pillar 1 -->
+                <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-3 sm:space-y-4 hover:border-stone-300 hover:shadow-xs transition-all duration-300">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-saffron-50 border border-saffron-100 rounded-full flex items-center justify-center mx-auto text-saffron-600 text-base sm:text-lg">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="font-cinzel text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-900">Scriptural Accuracy</h3>
+                    <p class="text-[10px] sm:text-[11px] leading-relaxed text-stone-500 font-light">We consult pristine, uncompromised translations of our spiritual shlokas directly, avoiding commercial dilution to safeguard their inner charge.</p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-3 sm:space-y-4 hover:border-stone-300 hover:shadow-xs transition-all duration-300">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-saffron-50 border border-saffron-100 rounded-full flex items-center justify-center mx-auto text-saffron-600 text-base sm:text-lg">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                    </div>
+                    <h3 class="font-cinzel text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-900">Acoustic Purity</h3>
+                    <p class="text-[10px] sm:text-[11px] leading-relaxed text-stone-500 font-light">Whether playing binaural loops or mixing local temple bell.mp3, we utilize native metrics designed to stabilize and balance your environment.</p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-3 sm:space-y-4 hover:border-stone-300 hover:shadow-xs transition-all duration-300">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-saffron-50 border border-saffron-100 rounded-full flex items-center justify-center mx-auto text-saffron-600 text-base sm:text-lg">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                    </div>
+                    <h3 class="font-cinzel text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-900">Accessible Seekers Space</h3>
+                    <p class="text-[10px] sm:text-[11px] leading-relaxed text-stone-500 font-light">Bridging modern software interfaces with traditional wisdom. Making sure that tools like the Sage AI chat are fully responsive and easy to use.</p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 text-center space-y-3 sm:space-y-4 hover:border-stone-300 hover:shadow-xs transition-all duration-300">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-saffron-50 border border-saffron-100 rounded-full flex items-center justify-center mx-auto text-saffron-600 text-base sm:text-lg">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <h3 class="font-cinzel text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-900">Modern Satsang Edits</h3>
+                    <p class="text-[10px] sm:text-[11px] leading-relaxed text-stone-500 font-light">Bringing the timeless wisdom of Sri Krishna, Sadhguru, and Premanand Ji Maharaj to life through engaging, high-quality video edits tailored for the modern digital world.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- EDITORIAL FOOTER SECTION -->
+    <footer class="bg-stone-100 text-stone-600 text-[10px] sm:text-[11px] py-8 sm:py-12 px-4 sm:px-8 border-t border-stone-200 text-center sm:text-left">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-stone-500 tracking-wider uppercase font-light">
+            <p>© 2026 Dharma Vaani. Created with ultimate devotion.</p>
+            <div class="flex gap-4">
+                <a href="index.html" class="hover:text-stone-900 transition-colors p-2 min-h-[44px] flex items-center">Return to Main Sanctuary</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE BEHAVIOR SCRIPTS -->
+    <script type="module">
+        // JavaScript logic to dynamically detect photo errors and show placeholder
+        window.handlePhotoError = function() {
+            const fallback = document.getElementById('photo-fallback');
+            const img = document.getElementById('founder-photo');
+            if (fallback && img) {
+                fallback.classList.remove('hidden');
+                img.style.display = 'none';
+            }
+        };
+
+        // Pre-check for image trigger validation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const img = document.getElementById('founder-photo');
+            if (img && (!img.complete || img.naturalWidth === 0)) {
+                // Instantly tests path integrity
+                const imgTester = new Image();
+                imgTester.src = img.src;
+                imgTester.onerror = () => {
+                    handlePhotoError();
+                };
+            }
+        });
+    </script>
+</body>
+</html>

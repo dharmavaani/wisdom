@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharma Vaani | Sacred Discourses, Mantras & Meditation</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#92400e',
+                            900: '#78350f',
+                        },
+                        stone: {
+                            50: '#FCFBF9',
+                            100: '#FAF8F5',
+                            200: '#EAE8E4',
+                            300: '#DCDAD6',
+                            900: '#1C1917',
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Meditative scrollbar custom layout */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #DCDAD6;
+            border-radius: 2px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b45309;
+        }
+        .clean-transition {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-900 font-sans selection:bg-saffron-100 selection:text-saffron-900 min-h-screen flex flex-col overflow-x-hidden antialiased">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-stone-100/90 backdrop-blur-md border-b border-stone-200/60 px-4 sm:px-8 md:px-12 py-3.5 flex justify-between items-center">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="scrollToSection('hero')">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 overflow-hidden flex items-center justify-center bg-transparent">
+                <img src="logo.png" alt="Dharma Vaani Logo" class="w-full h-full object-contain scale-[1.3]" style="mix-blend-mode: multiply;" onerror="this.src='https://placehold.co/100x100/FAF8F5/78350f?text=DV'">
+            </div>
+            <div>
+                <h1 class="font-cinzel text-xs sm:text-sm md:text-base font-bold tracking-widest text-stone-900 leading-none">Dharma Vaani</h1>
+                <span class="text-[8px] text-stone-500 tracking-widest uppercase font-medium block mt-0.5">Satsangs, Chants & Spiritual Wisdom</span>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation Items (Clean & Simple text) -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[10px] font-semibold uppercase tracking-widest text-stone-500">
+            <a href="#discourses" class="hover:text-stone-900 transition-colors">Discourses</a>
+            <a href="#ambient-soundboard" class="hover:text-stone-900 transition-colors">Meditate</a>
+            <a href="#ask-sage" class="hover:text-stone-900 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-sparkles text-saffron-500"></i> Ask Sage</a>
+            <a href="#daily-shloka" class="hover:text-stone-900 transition-colors">Scriptural Shlokas</a>
+            <a href="aboutthefounder.html" class="hover:text-stone-900 transition-colors">Founder Bio</a>
+        </nav>
+
+        <!-- Right Header Action Center -->
+        <div class="flex items-center gap-3">
+            <!-- Desktop Brand Bridge Connection Button -->
+            <div class="hidden sm:block">
+                <a href="lifestyle.html" class="bg-stone-900 text-stone-100 hover:bg-stone-800 font-medium px-4 py-2 sm:px-5 sm:py-2.5 rounded-full transition-all tracking-widest text-[9px] uppercase inline-flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-store text-[10px]"></i> <span>Lifestyle Store</span>
+                </a>
+            </div>
+
+            <!-- Hamburger Icon Button for Mobile -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-stone-700 hover:text-stone-900 focus:outline-none transition-colors">
+                <i id="menu-icon" class="fa-solid fa-bars text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Sliding Menu Overlay -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-stone-100/95 backdrop-blur-md border-b border-stone-200/80 px-6 py-5 flex flex-col gap-4 shadow-lg z-30 transition-all duration-300">
+            <a href="#discourses" onclick="toggleMobileMenu(); scrollToSection('discourses')" class="text-[10px] font-semibold uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-colors py-1.5 border-b border-stone-200/40">Discourses</a>
+            <a href="#ambient-soundboard" onclick="toggleMobileMenu(); scrollToSection('ambient-soundboard')" class="text-[10px] font-semibold uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-colors py-1.5 border-b border-stone-200/40">Meditate</a>
+            <a href="#ask-sage" onclick="toggleMobileMenu(); scrollToSection('ask-sage')" class="text-[10px] font-semibold uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-colors py-1.5 border-b border-stone-200/40 flex items-center gap-1.5"><i class="fa-solid fa-sparkles text-saffron-500"></i> Ask Sage</a>
+            <a href="#daily-shloka" onclick="toggleMobileMenu(); scrollToSection('daily-shloka')" class="text-[10px] font-semibold uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-colors py-1.5 border-b border-stone-200/40">Scriptural Shlokas</a>
+            <a href="aboutthefounder.html" onclick="toggleMobileMenu()" class="text-[10px] font-semibold uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-colors py-1.5 border-b border-stone-200/40">About the Founder</a>
+            <div class="pt-2">
+                <a href="lifestyle.html" class="w-full text-center bg-stone-900 text-stone-100 hover:bg-stone-800 font-medium px-4 py-3 rounded-full transition-all tracking-widest text-[9px] uppercase flex items-center justify-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-store text-[10px]"></i> <span>Lifestyle Store</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CLEAN HERO SEGMENT -->
+    <section id="hero" class="relative py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-24 border-b border-stone-200/60 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 bg-stone-50">
+        <div class="max-w-2xl text-center lg:text-left space-y-6">
+            <span class="inline-flex items-center gap-1.5 text-[9px] tracking-widest text-saffron-600 uppercase font-semibold border border-saffron-200 px-3 py-1 rounded-full bg-saffron-50/50">
+                <i class="fa-solid fa-om"></i> Tune Into Inner Awakening
+            </span>
+            <h1 class="font-cinzel text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-wide leading-tight text-stone-900">
+                Vedic Wisdom <br><span class="italic text-saffron-600 font-light">for the Modern</span> Seeker
+            </h1>
+            <p class="text-xs sm:text-sm text-stone-500 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+                Explore timeless Vedic discourses, Bhagavad Gita tutorials, and custom synthesized target binaural sound meditations. Curated carefully under sacred metrics to elevate your space, mind, and sanctuary.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-3.5 pt-4 justify-center lg:justify-start max-w-md mx-auto lg:mx-0">
+                <a href="https://youtube.com/@dharma_vaani_official?si=B7Z0sQtPm9d-qA2E" target="_blank" class="w-full sm:w-auto text-center bg-stone-900 text-stone-100 hover:bg-stone-800 font-medium px-8 py-3.5 rounded-full transition-all tracking-widest text-[10px] uppercase shadow-sm">
+                    Explore on YouTube <i class="fa-brands fa-youtube ml-1.5 text-xs text-red-500"></i>
+                </a>
+                <button onclick="scrollToSection('discourses')" class="w-full sm:w-auto bg-transparent hover:bg-stone-100 text-stone-700 border border-stone-300 px-8 py-3.5 rounded-full transition-all tracking-widest text-[10px] uppercase">
+                    Begin Discourses <i class="fa-solid fa-spa ml-1.5 text-[9px]"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Official Channel Intro Video Card -->
+        <div class="w-full max-w-md bg-white border border-stone-200/80 p-4 sm:p-5 rounded-2xl shadow-xs flex flex-col justify-between h-auto min-h-[420px] lg:h-96">
+            <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <span class="text-[8px] uppercase tracking-wider font-semibold text-saffron-700 bg-saffron-50 border border-saffron-100 px-3 py-1 rounded-full flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-play text-[9px]"></i> Official Channel Intro
+                    </span>
+                </div>
+                <h3 class="font-cinzel text-sm sm:text-base text-stone-900 font-semibold tracking-wide leading-snug">Voice of Sanatan Dharma</h3>
+                <p class="text-xs text-stone-500 font-light leading-relaxed">
+                    Watch our official introductory video to align with the sacred teachings shared on our spiritual platform.
+                </p>
+            </div>
+            
+            <div class="mt-4 aspect-video w-full rounded-xl overflow-hidden border border-stone-100 bg-stone-50 shadow-inner">
+                <iframe class="w-full h-full" src="thumbnail.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="border-t border-stone-100 pt-3 mt-4 text-[10px] text-stone-400 font-light text-center sm:text-left italic">
+                <span>"Sanatan is not just a religion... it's a way of life."</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE DISCOURSES VIDEO PLAYER -->
+    <section id="discourses" class="py-12 sm:py-20 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto w-full text-left">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 sm:mb-12 border-b border-stone-200/60 pb-6">
+            <div>
+                <h2 class="font-cinzel text-base sm:text-lg md:text-xl text-stone-900 font-semibold tracking-widest uppercase">The Satsang Library</h2>
+                <p class="text-[9px] text-saffron-600 font-semibold tracking-widest uppercase mt-1">Explore divine classes and scriptural deep dives</p>
+            </div>
+            
+            <!-- Category Navigation Filter Pills -->
+            <div class="flex flex-wrap gap-2 text-[9px] font-semibold uppercase tracking-wider" id="discourse-tabs">
+                <button onclick="switchDiscourseCategory('all')" id="tab-all" class="category-tab-btn clean-transition bg-stone-900 text-stone-100 border border-stone-900 px-3.5 py-1.5 rounded-full">All</button>
+                <button onclick="switchDiscourseCategory('gita')" id="tab-gita" class="category-tab-btn clean-transition bg-white text-stone-600 border border-stone-200 hover:bg-stone-50 px-3.5 py-1.5 rounded-full">Gita Wisdom</button>
+                <button onclick="switchDiscourseCategory('chants')" id="tab-chants" class="category-tab-btn clean-transition bg-white text-stone-600 border border-stone-200 hover:bg-stone-50 px-3.5 py-1.5 rounded-full">Premanand Ji</button>
+                <button onclick="switchDiscourseCategory('upanishads')" id="tab-upanishads" class="category-tab-btn clean-transition bg-white text-stone-600 border border-stone-200 hover:bg-stone-50 px-3.5 py-1.5 rounded-full">Sadhguru</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Live YouTube Video Player View -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="relative overflow-hidden rounded-2xl bg-stone-950 aspect-video border border-stone-200/50 shadow-sm">
+                    <!-- Secure cookie-free environment embed used explicitly -->
+                    <iframe id="main-youtube-player" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/dnhrjmbkiAU?si=3JH8tLheZJ_vjYr4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span id="player-tag" class="text-[9px] uppercase tracking-widest font-semibold text-saffron-600 font-sans">Krishna Wisdom for Youth</span>
+                        <span class="text-[9px] uppercase tracking-widest font-bold text-stone-400 bg-stone-100 border border-stone-200 px-2 py-0.5 rounded font-sans">Active Playing</span>
+                    </div>
+                    <h3 id="player-title" class="font-cinzel text-sm sm:text-base md:text-lg text-stone-900 font-semibold tracking-wide">Message To Gen-Z By Shree Krishna</h3>
+                    <p id="player-description" class="text-xs text-stone-500 font-light leading-relaxed font-sans">
+                        What if Lord Krishna spoke directly to Gen-Z today? Explore how the timeless wisdom of the Bhagavad Gita can help you overcome social media addiction, anxiety, overthinking, career pressure, and the fear of failure.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Side Interactive Discourses Playlist Grid -->
+            <div class="space-y-4 text-left">
+                <span class="text-[8px] font-semibold text-stone-400 uppercase tracking-widest block mb-1">Up Next in Playlist</span>
+                <div class="space-y-3 max-h-[360px] lg:max-h-[460px] overflow-y-auto pr-1" id="playlist-container">
+                    <!-- Populated dynamically via selectActiveDiscourse loop -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MEDITATION SOUNDBOARD -->
+    <section id="ambient-soundboard" class="bg-stone-50 border-t border-b border-stone-200/60 py-12 sm:py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 text-left space-y-8 sm:space-y-12">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
+                <div class="space-y-3 max-w-2xl">
+                    <span class="text-[9px] text-saffron-600 uppercase tracking-widest font-semibold border border-saffron-200 px-3 py-1 rounded-full bg-saffron-50/50 inline-block"><i class="fa-solid fa-spa mr-1"></i> Interactive Meditative Soundscape</span>
+                    <h2 class="font-cinzel text-lg sm:text-xl md:text-2xl font-medium tracking-wide">Dharma Ambient Soundboard</h2>
+                    <p class="text-xs text-stone-500 font-light leading-relaxed">
+                        Synthesize peaceful vibration states directly inside your browser using mathematical Vedic ratios. Select one pathway at a time to anchor your focus in uncompressed sound meditation.
+                    </p>
+                </div>
+                
+                <!-- Minimal Navigation Arrows (Sleek slider pagination) -->
+                <div class="flex gap-2 self-end">
+                    <button id="btn-prev" onclick="moveSlide(-1)" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-white hover:bg-stone-50 flex items-center justify-center text-stone-700 transition-all cursor-pointer disabled:opacity-30 disabled:pointer-events-none shadow-xs">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button id="btn-next" onclick="moveSlide(1)" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-white hover:bg-stone-50 flex items-center justify-center text-stone-700 transition-all cursor-pointer disabled:opacity-30 disabled:pointer-events-none shadow-xs">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Viewport Slider Container -->
+            <div class="overflow-hidden w-full py-2">
+                <div id="soundboard-track" class="flex transition-transform duration-500 ease-in-out w-full gap-4 sm:gap-6" style="transform: translateX(0%);">
+                    
+                    <!-- Sound Option 1: Cosmic Om Drone -->
+                    <div class="w-[100%] md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0">
+                        <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 flex flex-col justify-between h-56 transition-all hover:border-stone-300">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-600 block mb-1">Vibration Path A</span>
+                                    <h4 class="font-cinzel text-xs sm:text-sm font-semibold tracking-wide text-stone-900">Cosmic OM Drone</h4>
+                                    <p class="text-[11px] text-stone-400 font-light mt-1.5 leading-relaxed">Deep, resonant 136.1 Hz frequency matches earth meditation standards.</p>
+                                </div>
+                                <button onclick="toggleAudioNode('om')" id="btn-sound-om" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </button>
+                            </div>
+
+                            <!-- Volume/Scale Slider -->
+                            <div class="space-y-2 pt-4 border-t border-stone-100">
+                                <div class="flex justify-between text-[8px] text-stone-400 font-semibold uppercase">
+                                    <span>Vibration Intensity</span>
+                                    <span id="label-om-vol">50%</span>
+                                </div>
+                                <input id="slider-om-vol" oninput="adjustVolumeNode('om', this.value)" type="range" min="0" max="100" value="50" class="w-full accent-stone-900 h-1 cursor-pointer bg-stone-200 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sound Option 2: Tibetan Singing Bowl -->
+                    <div class="w-[100%] md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0">
+                        <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 flex flex-col justify-between h-56 transition-all hover:border-stone-300">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-600 block mb-1">Vibration Path B</span>
+                                    <h4 class="font-cinzel text-xs sm:text-sm font-semibold tracking-wide text-stone-900">Tibetan Singing Bowl</h4>
+                                    <p class="text-[11px] text-stone-400 font-light mt-1.5 leading-relaxed">Sustained singing bowl resonance synthesized live using clean sine layers.</p>
+                                </div>
+                                <button onclick="toggleAudioNode('bowl')" id="btn-sound-bowl" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </button>
+                            </div>
+
+                            <!-- Volume/Scale Slider -->
+                            <div class="space-y-2 pt-4 border-t border-stone-100">
+                                <div class="flex justify-between text-[8px] text-stone-400 font-semibold uppercase">
+                                    <span>Singing Hum Scale</span>
+                                    <span id="label-bowl-vol">50%</span>
+                                </div>
+                                <input id="slider-bowl-vol" oninput="adjustVolumeNode('bowl', this.value)" type="range" min="0" max="100" value="50" class="w-full accent-stone-900 h-1 cursor-pointer bg-stone-200 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sound Option 3: Ancient Temple Bell -->
+                    <div class="w-[100%] md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0">
+                        <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 flex flex-col justify-between h-56 transition-all hover:border-stone-300">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-600 block mb-1">Vibration Path C</span>
+                                    <h4 class="font-cinzel text-xs sm:text-sm font-semibold tracking-wide text-stone-900">Ancient Temple Bell</h4>
+                                    <p class="text-[11px] text-stone-400 font-light mt-1.5 leading-relaxed">Rich, complex high-frequency metallic strike with long, peaceful decay.</p>
+                                </div>
+                                <button onclick="triggerBellStrike()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all active:scale-95 cursor-pointer">
+                                    <i class="fa-solid fa-bell text-xs"></i>
+                                </button>
+                            </div>
+
+                            <div class="pt-4 border-t border-stone-100 flex justify-between items-center text-[8px] text-stone-400 font-semibold uppercase">
+                                <span>Sound Mechanism</span>
+                                <span class="text-saffron-600 font-semibold flex items-center gap-1"><i class="fa-solid fa-circle text-[6px] animate-pulse"></i> Instant Strike</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sound Option 4: Divine Bansuri Flute -->
+                    <div class="w-[100%] md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0">
+                        <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 flex flex-col justify-between h-56 transition-all hover:border-stone-300">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-600 block mb-1">Vibration Path D</span>
+                                    <h4 class="font-cinzel text-xs sm:text-sm font-semibold tracking-wide text-stone-900">Divine Bansuri Flute</h4>
+                                    <p class="text-[11px] text-stone-400 font-light mt-1.5 leading-relaxed">Vedic bamboo flute melodies to expand concentration during contemplation.</p>
+                                </div>
+                                <button onclick="togglePreuploadedTrack('flute')" id="btn-sound-flute" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </button>
+                            </div>
+
+                            <!-- Volume Slider -->
+                            <div class="space-y-2 pt-4 border-t border-stone-100">
+                                <div class="flex justify-between text-[8px] text-stone-400 font-semibold uppercase">
+                                    <span>Flute Intensity</span>
+                                    <span id="label-flute-vol">50%</span>
+                                </div>
+                                <input id="slider-flute-vol" oninput="adjustPreuploadedVolume('flute', this.value)" type="range" min="0" max="100" value="50" class="w-full accent-stone-900 h-1 cursor-pointer bg-stone-200 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sound Option 5: Morning Forest Rain -->
+                    <div class="w-[100%] md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0">
+                        <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 flex flex-col justify-between h-56 transition-all hover:border-stone-300">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-600 block mb-1">Vibration Path E</span>
+                                    <h4 class="font-cinzel text-xs sm:text-sm font-semibold tracking-wide text-stone-900">Morning Forest Rain</h4>
+                                    <p class="text-[11px] text-stone-400 font-light mt-1.5 leading-relaxed">High-fidelity ambient rain backdrop to isolate target meditation spaces.</p>
+                                </div>
+                                <button onclick="togglePreuploadedTrack('river')" id="btn-sound-river" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </button>
+                            </div>
+
+                            <!-- Volume Slider -->
+                            <div class="space-y-2 pt-4 border-t border-stone-100">
+                                <div class="flex justify-between text-[8px] text-stone-400 font-semibold uppercase">
+                                    <span>Rain Intensity</span>
+                                    <span id="label-river-vol">50%</span>
+                                </div>
+                                <input id="slider-river-vol" oninput="adjustPreuploadedVolume('river', this.value)" type="range" min="0" max="100" value="50" class="w-full accent-stone-900 h-1 cursor-pointer bg-stone-200 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sound Option 6: Nirvana Shatakam Chant -->
+                    <div class="w-[100%] md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0">
+                        <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-6 flex flex-col justify-between h-56 transition-all hover:border-stone-300">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-600 block mb-1">Vibration Path F</span>
+                                    <h4 class="font-cinzel text-xs sm:text-sm font-semibold tracking-wide text-stone-900">Nirvana Shatakam Chant</h4>
+                                    <p class="text-[11px] text-stone-400 font-light mt-1.5 leading-relaxed">Timeless Adi Shankara non-dual chant to cultivate pure witness consciousness.</p>
+                                </div>
+                                <button onclick="togglePreuploadedTrack('rain')" id="btn-sound-rain" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer">
+                                    <i class="fa-solid fa-play text-xs"></i>
+                                </button>
+                            </div>
+
+                            <!-- Volume Slider -->
+                            <div class="space-y-2 pt-4 border-t border-stone-100">
+                                <div class="flex justify-between text-[8px] text-stone-400 font-semibold uppercase">
+                                    <span>Chant Intensity</span>
+                                    <span id="label-rain-vol">50%</span>
+                                </div>
+                                <input id="slider-rain-vol" oninput="adjustPreuploadedVolume('rain', this.value)" type="range" min="0" max="100" value="50" class="w-full accent-stone-900 h-1 cursor-pointer bg-stone-200 rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASK THE DHARMA SAGE (GEMINI AI CHAT) -->
+    <section id="ask-sage" class="py-12 sm:py-20 px-4 sm:px-8 max-w-3xl mx-auto w-full text-left">
+        <div class="bg-white border border-stone-200/80 shadow-xs rounded-2xl p-4 sm:p-8 md:p-10 space-y-6">
+            <div class="text-center space-y-2">
+                <span class="text-[9px] text-saffron-600 uppercase tracking-widest font-semibold border border-saffron-100 px-3 py-1 rounded-full bg-saffron-50/50 inline-block"><i class="fa-solid fa-sparkles mr-1"></i> Ask the Dharma Sage</span>
+                <h2 class="font-cinzel text-base sm:text-lg md:text-xl text-stone-900 font-medium tracking-wide">Dharma Vaani AI</h2>
+                <p class="text-xs text-stone-400 font-light max-w-sm mx-auto">Ask your personal questions on Scriptures, Gita, Mind Taming, or Daily Dharma, and receive immediate, grounded Vedic Guidance.</p>
+            </div>
+
+            <!-- Simulated Chat Output Screen -->
+            <div id="sage-chat-display" class="border border-stone-200/60 rounded-xl h-[320px] overflow-y-auto bg-stone-100 p-4 space-y-4 text-xs">
+                <!-- Initial Sage Greeting -->
+                <div class="flex gap-3 items-start max-w-lg">
+                    <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-white flex-shrink-0">
+                        <i class="fa-solid fa-om text-xs"></i>
+                    </div>
+                    <div class="bg-white border border-stone-200 p-3.5 sm:p-4 rounded-xl rounded-tl-none leading-relaxed text-stone-800 shadow-2xs">
+                    🌼 Welcome, Seeker. Swagatam… Tum aaye ho, yeh bhi ek leela hai. I am Dharma Vaani AI - your Digital Rishi, your humble guide on the path of Sanatan Dharma.    
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instant Prompt suggestion tags -->
+            <div class="space-y-2">
+                <span class="text-[8px] uppercase tracking-widest font-semibold text-stone-400 block mb-1">Recommended Questions</span>
+                <div class="flex flex-wrap gap-1.5">
+                    <button onclick="sendSagePrompt('How do I handle stress using Bhagavad Gita principles?')" class="text-[9px] font-medium text-stone-600 bg-stone-100 border border-stone-200/80 px-3 py-1.5 rounded-full hover:border-stone-900 hover:bg-white transition-all text-left sm:text-center">Gita on Stress</button>
+                    <button onclick="sendSagePrompt('What is the true difference between Karma and Dharma?')" class="text-[9px] font-medium text-stone-600 bg-stone-100 border border-stone-200/80 px-3 py-1.5 rounded-full hover:border-stone-900 hover:bg-white transition-all text-left sm:text-center">Karma vs Dharma</button>
+                    <button onclick="sendSagePrompt('Give me a simple daily 10-minute meditation blueprint.')" class="text-[9px] font-medium text-stone-600 bg-stone-100 border border-stone-200/80 px-3 py-1.5 rounded-full hover:border-stone-900 hover:bg-white transition-all text-left sm:text-center">10-Min Meditation</button>
+                </div>
+            </div>
+
+            <!-- Form Input Area -->
+            <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center border-t border-stone-100 pt-6">
+                <input id="sageChatInput" type="text" onkeydown="handleSageInputKey(event)" placeholder="How can I manage expectations or find my purpose?" class="flex-grow text-xs sm:text-sm p-3 border border-stone-200 rounded-xl focus:outline-none focus:border-stone-400 bg-stone-50">
+                <button onclick="submitSageQuery()" id="btn-send-sage" class="bg-stone-900 hover:bg-stone-800 text-stone-100 font-medium px-5 py-3 rounded-xl transition-all uppercase tracking-widest text-[9px] flex items-center justify-center gap-1.5 cursor-pointer">
+                    <span>Send</span> <i class="fa-solid fa-paper-plane text-[8px]"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAILY SCRIPTURAL WISDOM (SHLOKA CARD) -->
+    <section id="daily-shloka" class="bg-stone-50 border-t border-b border-stone-200/60 py-12 sm:py-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-8 text-center space-y-8">
+            <span class="text-[9px] text-saffron-600 uppercase tracking-widest font-semibold border border-saffron-200 px-3 py-1 rounded-full bg-white inline-block"><i class="fa-solid fa-scroll mr-1"></i> Scriptural Wisdom</span>
+            <h2 class="font-cinzel text-base sm:text-lg md:text-xl text-stone-900 font-medium tracking-wide">Daily Shloka Reflection</h2>
+            
+            <!-- Shloka Display Card -->
+            <div id="shloka-wis-card" class="bg-white border border-stone-200 rounded-2xl p-5 sm:p-10 text-center relative overflow-hidden transition-all duration-500">
+                <div class="space-y-6 relative z-10">
+                    <!-- Sanskrit Text -->
+                    <p id="shloka-sanskrit" class="font-cinzel text-xs sm:text-sm md:text-base font-semibold tracking-wide text-saffron-700 leading-relaxed italic">
+                        कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।<br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥
+                    </p>
+                    
+                    <!-- Transliteration -->
+                    <p id="shloka-translit" class="text-[10px] sm:text-[11px] text-stone-600 tracking-wide font-light italic leading-relaxed">
+                        karmaṇy-evādhikāras te mā phaleṣu kadācena |<br>mā karma-phala-hetur bhūr mā te saṅgo ’stv-akarmaṇi ||
+                    </p>
+
+                    <hr class="w-12 border border-stone-100 mx-auto">
+
+                    <!-- Translation -->
+                    <div class="space-y-1">
+                        <span class="text-[7px] uppercase tracking-widest font-semibold text-stone-400 block">Translation</span>
+                        <p id="shloka-english" class="text-xs text-stone-500 font-light leading-relaxed max-w-lg mx-auto">
+                            "You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself to be the cause of the results of your activities, nor be attached to inactive states."
+                        </p>
+                    </div>
+
+                    <!-- Commentary segment -->
+                    <div class="space-y-1 pt-4 border-t border-stone-100">
+                        <span class="text-[7px] uppercase tracking-widest font-semibold text-saffron-600 block">Dharma Commentary</span>
+                        <p id="shloka-commentary" class="text-[10px] text-stone-400 leading-relaxed font-light max-w-md mx-auto">
+                            This verse forms the cornerstone of Karma Yoga. It teaches us to redirect our focus from future expectations to current actions, thereby taming stress and anxiety.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-3">
+                <button onclick="cycleDailyShloka()" class="w-full sm:w-auto bg-stone-900 hover:bg-stone-800 text-stone-100 font-medium px-6 py-3 rounded-full text-[9px] uppercase tracking-widest transition-all cursor-pointer">Inscribe New Wisdom</button>
+                <button onclick="copyShlokaText()" class="w-full sm:w-auto bg-white hover:bg-stone-100 border border-stone-200 text-stone-700 font-medium px-6 py-3 rounded-full text-[9px] uppercase tracking-widest transition-all cursor-pointer">Copy Shloka</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOUL BLUEPRINT SYSTEM QUIZ 
+    <section id="soul-quiz" class="py-12 sm:py-20 px-4 sm:px-8 max-w-lg mx-auto w-full text-left">
+        <div class="bg-white border border-stone-200/80 rounded-2xl p-5 sm:p-10 shadow-2xs relative overflow-hidden">
+            <div id="quiz-workspace" class="space-y-4">
+                <div class="text-center space-y-3 mb-6">
+                    <span class="text-[9px] text-saffron-600 uppercase tracking-widest font-semibold block">Vedas Self-Discovery</span>
+                    <h2 class="font-cinzel text-base sm:text-lg text-stone-900 font-medium tracking-wide">Determine Your Path</h2>
+                    <p class="text-xs text-stone-400 font-light leading-relaxed">Take this rapid 2-step questionnaire to discover which scriptural playlist or meditation path is aligned with your current spiritual growth state.</p>
+                </div>
+
+                <div class="flex justify-center pt-2">
+                    <button onclick="beginSoulQuizFlow()" class="w-full text-center sm:w-auto bg-stone-900 hover:bg-stone-800 text-stone-100 font-medium px-8 py-3.5 rounded-full text-[9px] uppercase tracking-widest transition-all cursor-pointer">Begin Soul Assessment</button>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- INTERCONNECTED BRAND SHOWCASE -->
+    <section class="bg-stone-900 text-stone-100 py-12 sm:py-16 px-4 sm:px-8 md:px-12 lg:px-24 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10 relative border-t border-stone-800">
+        <div class="max-w-xl text-left space-y-4">
+            <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-500 block"><i class="fa-solid fa-store mr-1"></i> Dharma Vaani Sanctuary Boutique</span>
+            <h3 class="font-cinzel text-base sm:text-xl lg:text-2xl text-stone-100 font-medium tracking-wide leading-tight">Elevate Your Sacred Sanctuary Space</h3>
+            <p class="text-xs text-stone-300 leading-relaxed font-light">
+                Bring pristine Vedic aesthetics home. Explore organic shloka-printed shawls, high-quality Sanskrit tees, and customizable gold foil reminds generated locally inside our artisan workspace.
+            </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 text-center w-full md:w-auto">
+            <a href="lifestyle.html" class="bg-white hover:bg-stone-100 text-stone-900 font-medium px-6 py-3.5 rounded-full transition-all tracking-widest text-[9px] uppercase flex items-center justify-center gap-1.5">
+                Explore Store Catalog <i class="fa-solid fa-arrow-right text-[8px]"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- LIGHT THEMED EDITORIAL FOOTER SECTION -->
+    <footer class="bg-stone-100 text-stone-600 text-[11px] py-12 px-4 sm:px-8 md:px-12 mt-auto border-t border-stone-200 text-left">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 overflow-hidden flex items-center justify-center bg-stone-200/50 rounded-xl relative p-0.5">
+                        <img src="logo.png" alt="Dharma Vaani Logo" class="w-full h-full object-contain scale-[1.35]" style="mix-blend-mode: multiply;" onerror="this.src='https://placehold.co/100x100/E7E5E4/431407?text=DV'">
+                    </div>
+                    <h4 class="font-cinzel text-stone-900 text-xs font-semibold tracking-wider">DHARMA VAANI</h4>
+                </div>
+                <p class="font-light text-stone-500 leading-relaxed text-[11px]">
+                    Bringing pristine Vedic wisdom, Satsangs, and meditations to the modern seeker. Guided carefully to align space, consciousness, and path.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-cinzel text-stone-900 text-[9px] font-bold uppercase tracking-widest mb-4">Satsang Archive</h4>
+                <ul class="space-y-2 font-light text-[11px]">
+                    <li><a href="#discourses" onclick="switchDiscourseCategory('gita')" class="hover:text-stone-900 transition-colors">Bhagavad Gita Wisdom</a></li>
+                    <li><a href="#discourses" onclick="switchDiscourseCategory('chants')" class="hover:text-stone-900 transition-colors">Premanand Ji Maharaj</a></li>
+                    <li><a href="#discourses" onclick="switchDiscourseCategory('upanishads')" class="hover:text-stone-900 transition-colors">Sadhguru</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-cinzel text-stone-900 text-[9px] font-bold uppercase tracking-widest mb-4">Interactive Hubs</h4>
+                <ul class="space-y-2 font-light text-[11px]">
+                    <li><a href="#ask-sage" class="hover:text-stone-900 transition-colors font-sans">Ask the Sage (Dharma Vaani AI)</a></li>
+                    <li><a href="#ambient-soundboard" class="hover:text-stone-900 transition-colors font-sans">Meditation Ambient Soundboard</a></li>
+                    <li><a href="#daily-shloka" class="hover:text-stone-900 transition-colors font-sans">Daily Shloka Reflection</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-cinzel text-stone-900 text-[9px] font-bold uppercase tracking-widest mb-4">Synergy Portals</h4>
+                <ul class="space-y-2 font-light text-[11px]">
+                    <li><a href="lifestyle.html" class="hover:text-stone-900 transition-colors font-sans"><i class="fa-solid fa-store text-[8px] mr-1"></i> Dharmic Lifestyle Store</a></li>
+                    <li><a href="https://youtube.com/@dharma_vaani_official?si=rtWCbhAjEgE05HH2" class="hover:text-stone-900 transition-colors font-sans">Join Dharma Vaani Family</a></li>
+                    <li><a href="aboutthefounder.html" class="hover:text-stone-900 transition-colors font-sans">Meet the Founder</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-stone-200 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-stone-500 text-[10px] tracking-wider uppercase font-light">
+            <p>© 2026 Dharma Vaani. Guided by pure devotion | Managed by Amrit Kumar.</p>
+            <div class="flex gap-4">
+                <a href="https://youtube.com/@dharma_vaani_official?si=9SCvKWJZI2Am59kp" class="hover:text-stone-900 transition-colors font-sans">YouTube</a>
+                <a href="https://www.instagram.com/_dharma_vaani_?igsh=MWZvdTNqanBzaGx1ZA==" class="hover:text-stone-900 transition-colors font-sans">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT BEHAVIORS -->
+    <script type="module">
+        const satsangsDb = [
+            {
+                id: 1,
+                title: "Message To Gen-Z By Shree Krishna",
+                category: "gita",
+                youtubeId: "dnhrjmbkiAU", 
+                si: "3JH8tLheZJ_vjYr4",    
+                tag: "Krishna Wisdom for Youth",
+                duration: "14:22",
+                desc: "What if Lord Krishna spoke directly to Gen-Z today? Explore how the timeless wisdom of the Bhagavad Gita can help you overcome social media addiction, anxiety, overthinking, career pressure, and the fear of failure."
+            },
+            {
+                id: 2,
+                title: "Karam Yog - Part 1",
+                category: "gita",
+                youtubeId: "FO6syrr7TP4", 
+                tag: "Bhagavad Gita Wisdom",
+                duration: "18:45",
+                desc: "Discover the transformative power of Karma Yoga, the path of selfless action. Learn how to perform your duties with detachment and find freedom from stress and anxiety in the Bhagavad Gita's teachings."
+            },
+            {
+                id: 3,
+                title: "Gyan Yog",
+                category: "gita",
+                youtubeId: "PASJsNYDOB0", 
+                tag: "Bhagavad Gita Wisdom",
+                duration: "21:10",
+                desc: "Explore the profound teachings of Gyan Yoga, the path of knowledge, as outlined in the Bhagavad Gita."
+            },
+            {
+                id: 4,
+                title: "Difficulties on the path of Wisdom",
+                category: "chants",
+                youtubeId: "rSutdWA0IcY", 
+                tag: "Premanand Ji Maharaj",
+                duration: "12:35",
+                desc: "A deep dive into the challenges faced by seekers on the spiritual path, and how to overcome them with grace and perseverance."
+            },
+            {
+                id: 5,
+                title: "Time",
+                category: "gita",
+                youtubeId: "TDYWGev3tSQ", 
+                tag: "Bhagavad Gita Wisdom",
+                duration: "16:05",
+                desc: "An insightful discourse on the nature of time, its impact on our lives, and how to transcend its limitations through spiritual practice."
+            }
+        ];
+
+        // Curated Shlokas database
+        const shlokasDb = [
+            {
+                sanskrit: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥",
+                translit: "karmaṇy-evādhikāras te mā phaleṣu kadācena |\nmā karma-phala-hetur bhūr mā te saṅgo ’stv-akarmaṇi ||",
+                english: "\"You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself to be the cause of the results of your activities, nor be attached to inactive states.\"",
+                commentary: "This verse forms the cornerstone of Karma Yoga. It teaches us to redirect our focus from future expectations to current actions, thereby taming stress and anxiety.",
+                source: "Bhagavad Gita 2.47"
+            },
+            {
+                sanskrit: "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत ।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम् ॥",
+                translit: "yadā yadā hi dharmasya glānir bhavati bhārata |\nabhyutthānam adharmasya tadātmānaṁ sṛjāmy aham ||",
+                english: "\"Whenever and wherever there is a decline in religious practice, O descendant of Bharat, and a predominant rise of irreligion—at that time I descend Myself.\"",
+                commentary: "A powerful promise of divine restoration and cosmic balance, indicating that goodness and natural order will always rise to override chaos.",
+                source: "Bhagavad Gita 4.7"
+            },
+            {
+                sanskrit: "असतो मा सद्गमय ।\nतमसो मा ज्योतिर्गमय ।\nमृत्योर्मा अमृतं गमय ॥",
+                translit: "asato mā sad-gamaya |\ntamaso mā jyotir-gamaya |\nmṛtyor-mā amṛtaṁ gamaya ||",
+                english: "\"Lead me from the unreal to the real. Lead me from darkness to light. Lead me from death to immortality.\"",
+                commentary: "An ancient Upanishadic prayer representing the soul's ultimate cry for knowledge, truth, and transcendence above illusion.",
+                source: "Brihadaranyaka Upanishad"
+            },
+            {
+                sanskrit: "ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥",
+                translit: "īśāvāsyam idaṁ sarvaṁ yat kiñca jagatyāṁ jagat |\ntena tyaktena bhuñjīthā mā gṛdhaḥ kasya svid dhanam ||",
+                english: "\"Everything individual, living or inanimate, within the universe is controlled and owned by the Divine. One should therefore accept only those things necessary for oneself, and never covet others' wealth.\"",
+                commentary: "Encourages a life of deep environmental gratitude, sustainable detachment, and mindful sharing.",
+                source: "Isha Upanishad 1"
+            },
+            {
+                sanskrit: "न जायते म्रियते वा कदाचिद्\nनायं भूत्वा भविता वा न भूयः ।\nअजो नित्यः शाश्वतोऽयं पुराणो\nन हन्यते हन्यमाने शरीरे ॥",
+                translit: "na jāyate mriyate vā kadācin\nnāyaṁ bhūtvā bhavitā vā na bhūyaḥ |\najo nityaḥ śāśvato ’yaṁ purāṇo\nna hanyate hanyamāne śarīre ||",
+                english: "\"For the soul there is neither birth nor death at any time. He has not come into being, does not come into being, and will not come into being. He is unborn, eternal, ever-existing and primeval. He is not slain when the body is slain.\"",
+                commentary: "This verse describes the absolute immortality of the Atman (soul), teaching seekers to rise above the fear of physical destruction and tap into the eternal within.",
+                source: "Bhagavad Gita 2.20"
+            },
+            {
+                sanskrit: "वासांसि जीर्णानि यथा विहाय\nनवानि गृह्णाति नरोऽपराणि ।\nतथा शरीराणि विहाय जीर्णान्य्\nअन्यानि संयाति नवानि देही ॥",
+                translit: "vāsāmisi jīrṇāni yathā vihāya\nnavāni gṛhṇāti naro ’parāṇi |\ntathā śarīrāṇi vihāya jīrṇāny\nanyāni saṁyāti navāni dehī ||",
+                english: "\"As a person puts on new garments, giving up old ones, the soul similarly accepts new physical bodies, giving up the old and useless ones.\"",
+                commentary: "A beautiful metaphor of rebirth. The body is merely an outer garment of the true Self, encouraging us to look past transient physical changes.",
+                source: "Bhagavad Gita 2.22"
+            },
+            {
+                sanskrit: "क्रोधाद्भवति संमोहः संमोहात्स्मृतिविभ्रमः ।\nस्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति ॥",
+                translit: "krodhād bhavati sammohaḥ sammohāt smṛti-vibhramaḥ |\nsmṛti-bhraṁśād buddhi-nāśo buddhi-nāśāt praṇaśyati ||",
+                english: "\"From anger arises delusion, from delusion comes loss of memory, from loss of memory comes ruin of discrimination, and from ruin of discrimination, a person is utterly lost.\"",
+                commentary: "A psychological map of downfalls. It explains how uncontrolled anger degrades decision-making and wisdom, ultimately leading to destruction.",
+                source: "Bhagavad Gita 2.63"
+            },
+            {
+                sanskrit: "तस्मादसक्तः सततं कार्यं कर्म समाचर ।\nअसक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः ॥",
+                translit: "tasmād asaktaḥ satataṁ kāryaṁ karma samācara |\nasakto hy ācaran karma param āpnoti pūruṣaḥ ||",
+                english: "\"Therefore, without attachment, perform always the work that has to be done, for by performing work without attachment, man reaches the Supreme.\"",
+                commentary: "The path of active devotion. Performing duty as service, untethered by ego or personal expectation, naturally leads to absolute spiritual liberation.",
+                source: "Bhagavad Gita 3.19"
+            },
+            {
+                sanskrit: "अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते ।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम् ॥",
+                translit: "ananyāś cintayanto māṁ ye janāḥ paryupāsate |\nteṣāṁ nityābhiyuktānāṁ yoga-kṣemaṁ vahāmy aham ||",
+                english: "\"But those who always worship Me with exclusive devotion, meditating on My transcendental form—to them I carry what they lack and preserve what they have.\"",
+                commentary: "The ultimate promise of divine security (Yoga-Kshema). Unflinching, focused devotion brings deep inner peace and removes anxiety about physical security.",
+                source: "Bhagavad Gita 9.22"
+            },
+            {
+                sanskrit: "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज ।\nअहं त्वां सर्वपापेभ्यो मोक्षयिष्यामी मा शुचः ॥",
+                translit: "sarva-dharmān parityajya mām ekaṁ śaraṇaṁ vraja |\nahaṁ tvāṁ sarva-pāpebhyo mokṣayiṣyāmi mā śucaḥ ||",
+                english: "\"Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear.\"",
+                commentary: "The crown jewel of the Gita. Complete surrender to the Supreme Self dissolves all individual burdens, duties, and worries instantly.",
+                source: "Bhagavad Gita 18.66"
+            },
+            {
+                sanskrit: "अहं सर्वस्य प्रभवो मत्तः सर्वं प्रवर्तते ।\nइति मत्वा भजन्ते मां बुधा भावसमन्विताः ॥",
+                translit: "ahaṁ sarvasya prabhavo mattaḥ sarvaṁ pravartate |\niti matvā bhajante māṁ budhā bhāva-samanvitāḥ ||",
+                english: "\"I am the source of all spiritual and material worlds. Everything flows from Me. Understanding this deeply, the wise worship Me with intense devotion.\"",
+                commentary: "Highlights the cosmic interconnectedness of all existence and the joy of spiritual alignment.",
+                source: "Bhagavad Gita 10.8"
+            },
+            {
+                sanskrit: "दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः ।\nवीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते ॥",
+                translit: "duḥkheṣv anudvigna-manāḥ sukheṣu vigata-spṛhaḥ |\nvīta-rāga-bhaya-krodhaḥ sthita-dhīr munir ucyate ||",
+                english: "\"One whose mind remains undisturbed amidst sorrows, who is free from longing amidst pleasures, and who is beyond attachment, fear, and anger, is called a sage of steady wisdom.\"",
+                commentary: "Defines the state of 'Sthitaprajna'—steadfast, unwavering mental equilibrium under both adverse and favorable life circumstances.",
+                source: "Bhagavad Gita 2.56"
+            },
+            {
+                sanskrit: "ममैवांशो जीवलोके जीवभूतः सनातनः ।\nमनःषष्ठानीन्द्रियाणि प्रकृतिस्थानि कर्षति ॥",
+                translit: "mamaivāmśo jīva-loke jīva-bhūtaḥ sanātanaḥ |\nmanaḥ-ṣaṣṭhānīndriyāṇi prakṛti-sthāni kर्षati ||",
+                english: "\"The living entities in this conditioned world are My eternal fragmental parts. Due to conditioned life, they are struggling very hard with the six senses, which include the mind.\"",
+                commentary: "Points out our divine, eternal lineage and the restless struggle of the mind within worldly environments.",
+                source: "Bhagavad Gita 15.7"
+            },
+            {
+                sanskrit: "उद्धरेदात्मनात्मानं नात्मानमवसादयेत् ।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः ॥",
+                translit: "uddhared ātmanātmānaṁ nātmānam avasādayet |\nātmaiva hy ātmano bandhur ātmaiva ripur ātmanaḥ ||",
+                english: "\"One must elevate oneself by one's own mind, and not degrade oneself. The mind is the friend of the conditioned soul, and the mind is the enemy as well.\"",
+                commentary: "Self-reliance and empowerment. The mind can either be your greatest sanctuary of peace or your most hostile opponent depending on self-mastery.",
+                source: "Bhagavad Gita 6.5"
+            },
+            {
+                sanskrit: "मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः ।\nयत्क्रौञ्चमिथुनादेकमवधीः काममोहितम् ॥",
+                translit: "mā niṣāda pratiṣṭhāṁ tvamagamaḥ śāśvatīḥ samāḥ |\nyat krauñcamithunādekam avadhīḥ kāmamohitam ||",
+                english: "\"O Hunter, may you find no peace for eternal years to come, because you killed one of the pair of curlews (Krouncha birds) while it was deeply engrossed in love.\"",
+                commentary: "This spontaneous cry of deep empathy from Sage Valmiki gave birth to the classical Sanskrit 'Anushtup' meter and marked the beginning of the epic Ramayana.",
+                source: "Valmiki Ramayana 1.2.15"
+            },
+            {
+                sanskrit: "अपि स्वर्णमयी लङ्का न मे लक्ष्मण रोचते ।\nजननी जन्मभूमिश्च स्वर्गादपि गरीयसी ॥",
+                translit: "api svarṇamayī laṅkā na me lakṣmaṇa rocate |\njananī janmabhūmiśca svargādapi garīyasī ||",
+                english: "\"Even though Lanka is made of pure gold, O Lakshmana, it does not attract me. One's mother and motherland are far superior and greater than heaven itself.\"",
+                commentary: "Demonstrates Rama's unparalleled devotion to duty, heritage, and his roots over the lure of immense material wealth and golden palaces.",
+                source: "Valmiki Ramayana (Yuddha Kanda)"
+            },
+            {
+                sanskrit: "रामो विग्रहवान् धर्मः साधुः सत्यपराक्रमः ।\nराजा सर्वस्य लोकस्य देवानामिव वासवः ॥",
+                translit: "rāmo vigrahavān dharmaḥ sādhuḥ satya-parākramaḥ |\nrājā sarvasya lokasya devānāmiva vāsavaḥ ||",
+                english: "\"Rama is the personification of Dharma (righteousness). He is pious, absolute in his pursuit of truth, and holds sway as the king of all existence.\"",
+                commentary: "Identifies Rama not just as a king, but as the living, walking embodiment of moral law and cosmic order.",
+                source: "Valmiki Ramayana 3.37.13"
+            },
+            {
+                sanskrit: "सकृदेव प्रपन्नाय तवास्मीति च याचते ।\nअभयं सर्वभूतेभ्यो ददाम्येतद् व्रतं मम ॥",
+                translit: "sakṛdeva prapannāya tavāsmīti ca yācate |\nabhayaṁ sarva-bhūtebhyo dadāmyetad vrataṁ mama ||",
+                english: "\"To anyone who surrenders to me even once and declares 'I am Yours', I grant absolute fearlessness and protection from all beings. This is my sacred vow.\"",
+                commentary: "Rama's supreme pledge of compassion. It assures safety and refuge to any seeker who approaches with sincerity and pure surrender.",
+                source: "Valmiki Ramayana 6.18.33"
+            },
+            {
+                sanskrit: "सत्यमेवेश्वरो लोके सत्यं पद्मा समाश्रिता ।\nसत्यमूलानि सर्वाणि सत्यान्नास्ति परं पदम् ॥",
+                translit: "satyameveśvaro loke satyaṁ padmā samāśritā |\nsatyamūlāni sarvāṇi satyānnāsti paraṁ padam ||",
+                english: "\"Truth alone is God in this world; prosperity resides in truth. Everything has truth as its foundation; there is no state higher than truth.\"",
+                commentary: "An absolute teaching on Satya (Truth) from the Ayodhya Kanda, affirming that all worlds and cosmic orders rely entirely on truth.",
+                source: "Valmiki Ramayana 2.109.13"
+            },
+            {
+                sanskrit: "धर्मो हि परमो लोके धर्मे सत्यं प्रतिष्ठितम् ।\nधर्मसंश्रितमप्येतत् पितुर्वाक्यं मयोदितम् ॥",
+                translit: "dharmo hi paramo loke dharme satyaṁ pratiṣṭhitam |\ndharmasaṁśritamapyetat piturvākyaṁ mayoditam ||",
+                english: "\"Dharma is supreme in this world, and truth is established in dharma. It is out of dharma that I abide by my father's command.\"",
+                commentary: "Rama explains the primacy of moral duty over personal convenience, setting a standard for personal integrity and filial duty.",
+                source: "Valmiki Ramayana 2.21.41"
+            },
+            {
+                sanskrit: "न हि धर्मादपैत्येवं लोकपूज्यः शुचिः सुतः ।\nपितुर्वाक्यं विशेषेण कुरुते यः सुधार्मिकः ॥",
+                translit: "na hi dharmādapaityevaṁ lokapūjyaḥ śuciḥ sutaḥ |\npiturvākyaṁ viśeṣeṇa kurute yaḥ sudhārmikaḥ ||",
+                english: "\"A pious and righteous child never deviates from dharma, especially when they honor and execute the sincere wishes of their parents.\"",
+                commentary: "Speaks to the value of obedience, respect, and duty toward family structures, which forms a vital wing of domestic dharma.",
+                source: "Valmiki Ramayana 2.18.28"
+            },
+            {
+                sanskrit: "उत्पतिष्यति लोकेऽस्मिन् धर्मात्मा पुरुषो हि यः ।\nन स सत्यं परित्यज्य जीवितुं कामयेन्मनः ॥",
+                translit: "utpatiṣyati loke'smin dharmātmā puṣो hi yaḥ |\nna sa satyaṁ parityajya jīvituṁ kāmayenmanaḥ ||",
+                english: "\"A person of dharmic orientation who walks this earth would never choose to live at the cost of abandoning truth.\"",
+                commentary: "Emphasizes that to a righteous person, life without truth and integrity is hollow and meaningless.",
+                source: "Valmiki Ramayana 2.30.34"
+            }
+        ];
+
+        let currentActiveDiscourse = satsangsDb[0];
+        let activeShlokaIndex = 0;
+
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fa-solid fa-xmark text-lg';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fa-solid fa-bars text-lg';
+            }
+        };
+
+        window.showToast = function(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-5 right-5 z-[100] px-5 py-3 rounded-full shadow-md border text-[10px] font-semibold uppercase tracking-wider transition-all duration-300 transform translate-y-10 opacity-0 ${isError ? 'bg-red-50 text-red-800 border-red-200' : 'bg-stone-900 text-stone-100 border-stone-800'}`;
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 50);
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        };
+
+        window.scrollToSection = function(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        window.switchDiscourseCategory = function(category) {
+            const btns = document.querySelectorAll('.category-tab-btn');
+            btns.forEach(b => {
+                b.className = "category-tab-btn clean-transition bg-white text-stone-600 border border-stone-200 hover:bg-stone-50 px-3.5 py-1.5 rounded-full";
+            });
+
+            const activeBtn = document.getElementById(`tab-${category}`);
+            if (activeBtn) {
+                activeBtn.className = "category-tab-btn clean-transition bg-stone-900 text-stone-100 border border-stone-900 px-3.5 py-1.5 rounded-full";
+            }
+
+            renderSidePlaylist(category);
+        };
+
+        function renderSidePlaylist(category = 'all') {
+            const container = document.getElementById('playlist-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            let filtered = satsangsDb;
+            if (category !== 'all') {
+                filtered = satsangsDb.filter(s => s.category === category);
+            }
+
+            filtered.forEach(s => {
+                const isActive = s.id === currentActiveDiscourse.id;
+                container.innerHTML += `
+                    <div onclick="selectActiveDiscourse(${s.id})" class="flex items-center gap-3 p-2.5 rounded-xl border border-stone-200/60 cursor-pointer transition-all hover:bg-white hover:border-stone-400 ${isActive ? 'bg-white border-stone-900 shadow-3xs' : 'bg-transparent'}">
+                        <div class="w-14 h-10 rounded bg-stone-100 overflow-hidden relative flex-shrink-0">
+                            <img src="https://img.youtube.com/vi/${s.youtubeId}/hqdefault.jpg" class="w-full h-full object-cover">
+                            <span class="absolute bottom-0.5 right-0.5 bg-stone-950/80 text-[7px] text-white px-1 py-0.5 rounded font-bold">${s.duration || '15:00'}</span>
+                        </div>
+                        <div class="flex-grow text-left">
+                            <span class="text-[7px] uppercase tracking-widest text-saffron-600 font-semibold block">${s.tag}</span>
+                            <h4 class="font-cinzel text-[11px] font-semibold text-stone-900 leading-tight mt-0.5 line-clamp-1">${s.title}</h4>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        window.selectActiveDiscourse = function(id) {
+            const satsang = satsangsDb.find(s => s.id === id);
+            if (!satsang) return;
+
+            currentActiveDiscourse = satsang;
+            
+            // Secure cookie-free environment embed used explicitly
+            const iframe = document.getElementById('main-youtube-player');
+            if (iframe) {
+                iframe.src = `https://www.youtube-nocookie.com/embed/${satsang.youtubeId}?rel=0&autoplay=1&enablejsapi=1`;
+            }
+
+            document.getElementById('player-tag').innerText = satsang.tag;
+            document.getElementById('player-title').innerText = satsang.title;
+            document.getElementById('player-description').innerText = satsang.desc;
+
+            const catTabActive = document.querySelector('.category-tab-btn[class*="bg-stone-900"]');
+            const cat = catTabActive ? catTabActive.id.split('-')[1] : 'all';
+            
+            renderSidePlaylist(cat);
+            scrollToSection('discourses');
+            showToast(`Loading: ${satsang.title}`);
+        };
+
+        // Meditation Synthesizer parameters using pure Browser Web Audio context
+        let audioCtx = null;
+        let audioNodes = {
+            om: { osc1: null, osc2: null, gain: null, playing: false },
+            bowl: { oscNode: null, noiseNode: null, filterNode: null, gain: null, playing: false }
+        };
+
+        const preuploadedTracks = {
+            flute: { url: "flute.mp3", audio: null, playing: false },
+            river: { url: "rain.mp3", audio: null, playing: false },
+            rain: { url: "nirvanashatakam.mp3", audio: null, playing: false }
+        };
+
+        window.stopAllSounds = function(exceptType = null, exceptKey = null) {
+            // Stop synthesized OM drone
+            if (exceptType !== 'om' && audioNodes.om.playing) {
+                if (audioNodes.om.osc1) { audioNodes.om.osc1.stop(); audioNodes.om.osc1.disconnect(); }
+                if (audioNodes.om.osc2) { audioNodes.om.osc2.stop(); audioNodes.om.osc2.disconnect(); }
+                audioNodes.om.playing = false;
+                const btn = document.getElementById('btn-sound-om');
+                if (btn) {
+                    btn.innerHTML = `<i class="fa-solid fa-play text-xs"></i>`;
+                    btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer";
+                }
+            }
+            // Stop synthesized Singing Bowl drone
+            if (exceptType !== 'bowl' && audioNodes.bowl.playing) {
+                if (audioNodes.bowl.oscNode) { audioNodes.bowl.oscNode.stop(); audioNodes.bowl.oscNode.disconnect(); }
+                audioNodes.bowl.playing = false;
+                const btn = document.getElementById('btn-sound-bowl');
+                if (btn) {
+                    btn.innerHTML = `<i class="fa-solid fa-play text-xs"></i>`;
+                    btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer";
+                }
+            }
+            // Stop preuploaded MP3 file streams
+            for (const key in preuploadedTracks) {
+                if (key !== exceptKey && preuploadedTracks[key].playing) {
+                    if (preuploadedTracks[key].audio) {
+                        preuploadedTracks[key].audio.pause();
+                    }
+                    preuploadedTracks[key].playing = false;
+                    const btn = document.getElementById(`btn-sound-${key}`);
+                    if (btn) {
+                        btn.innerHTML = `<i class="fa-solid fa-play text-xs"></i>`;
+                        btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer";
+                    }
+                }
+            }
+        };
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        window.toggleAudioNode = function(type) {
+            initAudioContext();
+            
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const sound = audioNodes[type];
+            const btn = document.getElementById(`btn-sound-${type}`);
+
+            if (sound.playing) {
+                if (type === 'om') {
+                    if (sound.osc1) { sound.osc1.stop(); sound.osc1.disconnect(); }
+                    if (sound.osc2) { sound.osc2.stop(); sound.osc2.disconnect(); }
+                } else if (type === 'bowl') {
+                    if (sound.oscNode) { sound.oscNode.stop(); sound.oscNode.disconnect(); }
+                }
+                sound.playing = false;
+                btn.innerHTML = `<i class="fa-solid fa-play text-xs"></i>`;
+                btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer";
+                showToast(`${type === 'om' ? 'OM Drone' : 'Singing Bowl'} silenced.`);
+            } else {
+                // Silently stop other active sounds for single playback mutual exclusion
+                stopAllSounds(type, null);
+
+                sound.playing = true;
+                btn.innerHTML = `<i class="fa-solid fa-pause text-xs text-white"></i>`;
+                btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-900 bg-stone-900 text-stone-100 flex items-center justify-center transition-all cursor-pointer";
+
+                const volVal = parseFloat(document.getElementById(`slider-${type}-vol`).value) / 100;
+
+                if (type === 'om') {
+                    sound.gain = audioCtx.createGain();
+                    sound.gain.gain.value = volVal * 0.4;
+
+                    sound.osc1 = audioCtx.createOscillator();
+                    sound.osc1.type = 'sine';
+                    sound.osc1.frequency.value = 136.1;
+
+                    sound.osc2 = audioCtx.createOscillator();
+                    sound.osc2.type = 'sine';
+                    sound.osc2.frequency.value = 136.6;
+
+                    sound.osc1.connect(sound.gain);
+                    sound.osc2.connect(sound.gain);
+                    sound.gain.connect(audioCtx.destination);
+
+                    sound.osc1.start();
+                    sound.osc2.start();
+                } else if (type === 'bowl') {
+                    sound.gain = audioCtx.createGain();
+                    sound.gain.gain.value = volVal * 0.15;
+
+                    sound.oscNode = audioCtx.createOscillator();
+                    sound.oscNode.type = 'triangle';
+                    sound.oscNode.frequency.value = 220;
+
+                    const bandpass = audioCtx.createBiquadFilter();
+                    bandpass.type = 'bandpass';
+                    bandpass.frequency.value = 440;
+                    bandpass.Q.value = 15;
+
+                    sound.oscNode.connect(bandpass);
+                    bandpass.connect(sound.gain);
+                    sound.gain.connect(audioCtx.destination);
+
+                    sound.oscNode.start();
+                }
+                showToast(`Awakened continuous ${type === 'om' ? 'Cosmic OM' : 'Tibetan Bowl'} vibration.`);
+            }
+        };
+
+        window.adjustVolumeNode = function(type, val) {
+            const pct = parseInt(val, 10);
+            document.getElementById(`label-${type}-vol`).innerText = `${pct}%`;
+
+            const sound = audioNodes[type];
+            if (sound.playing && sound.gain) {
+                const actualGain = (pct / 100) * (type === 'om' ? 0.4 : 0.15);
+                sound.gain.gain.setTargetAtTime(actualGain, audioCtx.currentTime, 0.1);
+            }
+        };
+
+        window.togglePreuploadedTrack = function(trackKey) {
+            initAudioContext();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const track = preuploadedTracks[trackKey];
+            const btn = document.getElementById(`btn-sound-${trackKey}`);
+
+            if (!track.audio) {
+                track.audio = new Audio(track.url);
+                track.audio.loop = true;
+                const volumeValue = parseFloat(document.getElementById(`slider-${trackKey}-vol`).value) / 100;
+                track.audio.volume = volumeValue;
+            }
+
+            if (track.playing) {
+                track.audio.pause();
+                track.playing = false;
+                btn.innerHTML = `<i class="fa-solid fa-play text-xs"></i>`;
+                btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800 flex items-center justify-center transition-all cursor-pointer";
+                showToast(`Silenced Track Path.`);
+            } else {
+                // Silently stop other active sounds for single playback mutual exclusion
+                stopAllSounds(null, trackKey);
+
+                track.audio.play().then(() => {
+                    track.playing = true;
+                    btn.innerHTML = `<i class="fa-solid fa-pause text-xs text-white"></i>`;
+                    btn.className = "w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-900 bg-stone-900 text-stone-100 flex items-center justify-center transition-all cursor-pointer";
+                    showToast(`Playing local MP3 vibration.`);
+                }).catch(err => {
+                    console.warn("Local path playback failed (expected if files are not on local disk/server yet). Please verify relative filenames.", err);
+                    showToast(`Configure relative track '${track.url}' locally to test continuous play loops.`, true);
+                });
+            }
+        };
+
+        window.adjustPreuploadedVolume = function(trackKey, val) {
+            const pct = parseInt(val, 10);
+            document.getElementById(`label-${trackKey}-vol`).innerText = `${pct}%`;
+
+            const track = preuploadedTracks[trackKey];
+            if (track && track.audio) {
+                track.audio.volume = pct / 100;
+            }
+        };
+
+        window.triggerBellStrike = function() {
+            initAudioContext();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            // Mute all other background audio before triggering the temple bell strike
+            stopAllSounds();
+
+            const now = audioCtx.currentTime;
+            const volume = 0.5;
+
+            const frequencies = [200, 440, 880, 1200];
+            frequencies.forEach((freq, idx) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = idx === 0 ? 'sine' : 'triangle';
+                osc.frequency.value = freq;
+
+                gain.gain.setValueAtTime(0, now);
+                gain.gain.linearRampToValueAtTime(volume * (1 / (idx + 1)), now + 0.01);
+                const decayDuration = idx === 0 ? 4.5 : 2.5 / idx;
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + decayDuration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(now);
+                osc.stop(now + decayDuration);
+            });
+            showToast("🔔 Temple Bell struck.");
+        };
+
+        let currentSlide = 0;
+        window.moveSlide = function(direction) {
+            const track = document.getElementById('soundboard-track');
+            if (!track) return;
+            
+            const isMobile = window.innerWidth < 768;
+            const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+            
+            let maxIndex = 3; // default for desktop
+            if (isMobile) {
+                maxIndex = 5;
+            } else if (isTablet) {
+                maxIndex = 4;
+            }
+            
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide > maxIndex) currentSlide = maxIndex;
+            
+            // Apply translation with exact layout gap metrics
+            if (isMobile) {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            } else if (isTablet) {
+                track.style.transform = `translateX(calc(-${currentSlide} * (50% + 0.5rem)))`;
+            } else {
+                track.style.transform = `translateX(calc(-${currentSlide} * (33.333% + 0.5rem)))`;
+            }
+            
+            // Adjust minimal control button disabled parameters
+            const prevBtn = document.getElementById('btn-prev');
+            const nextBtn = document.getElementById('btn-next');
+            if (prevBtn) prevBtn.disabled = currentSlide === 0;
+            if (nextBtn) nextBtn.disabled = currentSlide === maxIndex;
+        };
+
+        window.cycleDailyShloka = function() {
+            activeShlokaIndex = (activeShlokaIndex + 1) % shlokasDb.length;
+            const shloka = shlokasDb[activeShlokaIndex];
+
+            const card = document.getElementById('shloka-wis-card');
+            card.classList.add('opacity-0', 'scale-[0.98]');
+
+            setTimeout(() => {
+                document.getElementById('shloka-sanskrit').innerHTML = shloka.sanskrit.replace(/\n/g, '<br>');
+                document.getElementById('shloka-translit').innerHTML = shloka.translit.replace(/\n/g, '<br>');
+                document.getElementById('shloka-english').innerText = shloka.english;
+                document.getElementById('shloka-commentary').innerText = shloka.commentary;
+                
+                card.classList.remove('opacity-0', 'scale-[0.98]');
+                showToast(`Wisdom Inscribed from ${shloka.source}`);
+            }, 250);
+        };
+
+        window.copyShlokaText = function() {
+            const shloka = shlokasDb[activeShlokaIndex];
+            const fullText = `${shloka.sanskrit}\n\n${shloka.translit}\n\n${shloka.english}\n\n- ${shloka.source}`;
+            
+            const el = document.createElement('textarea');
+            el.value = fullText;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            showToast("Shloka copied to clipboard!");
+        };
+
+        const systemPrompt = "🌼 Welcome, Seeker. Swagatam… Tum aaye ho, yeh bhi ek leela hai. I am Dharma Vaani AI - your Digital Rishi, your humble guide on the path of Sanatan Dharma";
+        const apiKey = "AQ.Ab8RN6KPCFyquV_cWvDyRTYeiEhKnkRrHAuji17W2xBDzMRHXw"; 
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        // Helper function for exponential backoff retries to handle potential throttling
+        async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (response.status === 429 && retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                }
+                return response;
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                }
+                throw error;
+            }
+        }
+
+        window.handleSageInputKey = function(event) {
+            if (event.key === 'Enter') {
+                submitSageQuery();
+            }
+        };
+
+        window.sendSagePrompt = function(question) {
+            document.getElementById('sageChatInput').value = question;
+            submitSageQuery();
+        };
+
+        window.submitSageQuery = async function() {
+            const input = document.getElementById('sageChatInput');
+            const query = input.value.trim();
+
+            if (!query) {
+                showToast("Please enter a scriptural question.", true);
+                return;
+            }
+
+            const chatDisplay = document.getElementById('sage-chat-display');
+            
+            chatDisplay.innerHTML += `
+                <div class="flex gap-3 items-start justify-end">
+                    <div class="bg-stone-200 border border-stone-300 p-3.5 rounded-xl rounded-tr-none max-w-md text-left text-stone-800 shadow-2xs">
+                        ${query}
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-white flex-shrink-0">
+                        <i class="fa-regular fa-user text-xs"></i>
+                    </div>
+                </div>
+            `;
+            chatDisplay.scrollTo({ top: chatDisplay.scrollHeight, behavior: 'smooth' });
+            input.value = "";
+
+            const loadId = `load-${Date.now()}`;
+            chatDisplay.innerHTML += `
+                <div id="${loadId}" class="flex gap-3 items-center animate-pulse max-w-lg">
+                    <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-white flex-shrink-0 animate-spin">
+                        <i class="fa-solid fa-om text-xs"></i>
+                    </div>
+                    <span class="text-[10px] text-stone-400 font-medium uppercase tracking-wider">Contemplating scriptural response...</span>
+                </div>
+            `;
+            chatDisplay.scrollTo({ top: chatDisplay.scrollHeight, behavior: 'smooth' });
+
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: query }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    }
+                };
+
+                const response = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                document.getElementById(loadId).remove();
+
+                if (text) {
+                    chatDisplay.innerHTML += `
+                        <div class="flex gap-3 items-start max-w-lg text-left">
+                            <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-white flex-shrink-0">
+                                <i class="fa-solid fa-om text-xs"></i>
+                            </div>
+                            <div class="bg-white border border-stone-200 p-4 rounded-xl rounded-tl-none shadow-2xs leading-relaxed text-stone-800">
+                                ${text.replace(/\n/g, '<br>')}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    throw new Error("Empty response returned from model.");
+                }
+            } catch (err) {
+                console.error("Gemini API retrieval failed:", err);
+                document.getElementById(loadId).remove();
+                chatDisplay.innerHTML += `
+                    <div class="flex gap-3 items-start max-w-lg text-left">
+                        <div class="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white flex-shrink-0">
+                            <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                        </div>
+                        <div class="bg-red-50 border border-red-100 p-4 rounded-xl rounded-tl-none text-red-800 leading-relaxed">
+                            Pardon me, seeker. The path to the cosmic servers is currently congested. Please focus your queries or try asking again in a few moments.
+                        </div>
+                    </div>
+                `;
+            }
+            chatDisplay.scrollTo({ top: chatDisplay.scrollHeight, behavior: 'smooth' });
+        };
+
+        let currentQuizIndex = 0;
+        let selectedPathScore = [];
+        const soulQuizQuestions = [
+            {
+                q: "1. What is the current predominant state of your mind?",
+                options: [
+                    { t: "Restless & Distracted (Seeking peace and focus)", path: "gita" },
+                    { t: "Curious & Skeptical (Seeking deep scriptural answers)", path: "chants" },
+                    { t: "Tired & Overwhelmed (Seeking mystical, non-dual secrets)", path: "upanishads" }
+                ]
+            },
+            {
+                q: "2. Which daily spiritual activity sounds most appealing to you?",
+                options: [
+                    { t: "Chanting powerful Sanskrit overtones - Premanand Ji Maharaj", path: "chants" },
+                    { t: "Understanding guidelines for work and karma - By Shri Krishna", path: "gita" },
+                    { t: "Contemplating the eternal nature of the Self - Sadhguru", path: "upanishads" }
+                ]
+            }
+        ];
+
+        window.beginSoulQuizFlow = function() {
+            currentQuizIndex = 0;
+            selectedPathScore = [];
+            renderQuizWorkspaceStep();
+        };
+
+        function renderQuizWorkspaceStep() {
+            const container = document.getElementById('quiz-workspace');
+            if (!container) return;
+
+            if (currentQuizIndex >= soulQuizQuestions.length) {
+                const paths = ["gita", "chants", "upanishads"];
+                const occurrences = paths.reduce((acc, p) => {
+                    acc[p] = selectedPathScore.filter(item => item === p).length;
+                    return acc;
+                }, {});
+
+                let recommendedPath = "gita";
+                if (occurrences["chants"] > occurrences["gita"] && occurrences["chants"] > occurrences["upanishads"]) {
+                    recommendedPath = "chants";
+                } else if (occurrences["upanishads"] > occurrences["gita"] && occurrences["upanishads"] > occurrences["chants"]) {
+                    recommendedPath = "upanishads";
+                }
+
+                let pathName = "Bhagavad Gita Deep Dives";
+                if (recommendedPath === "chants") pathName = "Sanskrit Chants & Meditations";
+                if (recommendedPath === "upanishads") pathName = "Secret Upanishad Satsangs";
+
+                container.innerHTML = `
+                    <div class="text-center space-y-4 py-4">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-2xl animate-bounce mx-auto"></i>
+                        <h3 class="font-cinzel text-xs font-semibold uppercase text-stone-900 tracking-wider">Blueprint Determined</h3>
+                        <p class="text-xs text-stone-500 font-light">Your spiritual profile is highly aligned with our **${pathName}** playlist category.</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-2 justify-center pt-4">
+                            <button onclick="switchDiscourseCategory('${recommendedPath}'); scrollToSection('discourses');" class="bg-stone-900 hover:bg-stone-800 text-stone-100 font-medium py-3 px-6 rounded-full text-[9px] uppercase tracking-widest transition-all cursor-pointer">Launch Playlist</button>
+                            <button onclick="beginSoulQuizFlow()" class="bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium px-4 py-3 rounded-full text-[9px] uppercase tracking-widest transition-all cursor-pointer">Restart</button>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const step = soulQuizQuestions[currentQuizIndex];
+            let optionsHtml = '';
+            step.options.forEach((opt) => {
+                optionsHtml += `
+                    <button onclick="submitQuizChoice('${opt.path}')" class="w-full text-left p-3.5 border border-stone-200 hover:border-stone-900 hover:bg-white rounded-xl text-xs font-medium transition-colors bg-stone-50">
+                        ${opt.t}
+                    </button>
+                `;
+            });
+
+            container.innerHTML = `
+                <div class="space-y-4 py-2 text-left">
+                    <span class="text-[8px] uppercase tracking-widest font-semibold text-saffron-600 block">Dharma Map Question ${currentQuizIndex + 1}/${soulQuizQuestions.length}</span>
+                    <h3 class="font-cinzel text-xs font-semibold uppercase text-stone-900 tracking-wider leading-relaxed">${step.q}</h3>
+                    <div class="space-y-2 pt-2">
+                        ${optionsHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        window.submitQuizChoice = function(path) {
+            selectedPathScore.push(path);
+            currentQuizIndex++;
+            renderQuizWorkspaceStep();
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSidePlaylist('all');
+            
+            // Initialize carousel arrow button state on document load
+            const prevBtn = document.getElementById('btn-prev');
+            if (prevBtn) prevBtn.disabled = true;
+        });
+
+        window.addEventListener('resize', () => {
+            moveSlide(0); // Recalculate slide translation coordinates on viewport changes
+        });
+    </script>
+</body>
+</html>
